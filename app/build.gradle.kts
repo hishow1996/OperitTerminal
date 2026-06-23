@@ -17,6 +17,11 @@ android {
         keystorePropertiesFile.reader(Charsets.UTF_8).use { reader ->
             keystoreProperties.load(reader)
         }
+    } else {
+        keystoreProperties.setProperty("RELEASE_KEY_ALIAS", System.getenv("RELEASE_KEY_ALIAS") ?: "")
+        keystoreProperties.setProperty("RELEASE_KEY_PASSWORD", System.getenv("RELEASE_KEY_PASSWORD") ?: "")
+        keystoreProperties.setProperty("RELEASE_STORE_FILE", System.getenv("RELEASE_STORE_FILE") ?: "")
+        keystoreProperties.setProperty("RELEASE_STORE_PASSWORD", System.getenv("RELEASE_STORE_PASSWORD") ?: "")
     }
 
     
