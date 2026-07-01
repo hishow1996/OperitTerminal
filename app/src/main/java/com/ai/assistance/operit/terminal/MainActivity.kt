@@ -69,15 +69,20 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    override fun onUserLeaveHint() {
-        super.onUserLeaveHint()
+    private fun dismissKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+        window.decorView.requestLayout()
+        window.decorView.findViewById<android.view.View>(android.R.id.content)?.requestLayout()
+    }
+
+    override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
+        dismissKeyboard()
     }
 
     override fun onPause() {
         super.onPause()
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-        imm?.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+        dismissKeyboard()
     }
 }
