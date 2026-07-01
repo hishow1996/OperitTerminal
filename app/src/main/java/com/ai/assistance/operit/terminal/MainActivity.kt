@@ -1,6 +1,7 @@
 package com.ai.assistance.operit.terminal
 
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         window.decorView.setBackgroundColor(android.graphics.Color.BLACK)
+        window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.BLACK))
 
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
         windowInsetsController.systemBarsBehavior =
